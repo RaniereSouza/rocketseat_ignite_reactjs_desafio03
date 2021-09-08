@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { ReactNode } from 'react';
 import Header from '../../components/Header';
 
@@ -34,6 +34,10 @@ jest.mock('../../hooks/useCart', () => {
 });
 
 describe('Header Component', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('should be able to render the amount of products added to cart', () => {
     const { getByTestId } = render(<Header />);
 

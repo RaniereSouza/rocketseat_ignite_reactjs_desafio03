@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 
 import { useCart } from '../../hooks/useCart';
 import Cart from '../../pages/Cart';
@@ -30,9 +30,13 @@ describe('Cart Page', () => {
           title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
         },
       ],
-      removeProduct: mockedRemoveProduct,
+      removeProductFromCart: mockedRemoveProduct,
       updateProductAmount: mockedUpdateProductAmount,
     });
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should be able to increase/decrease a product amount', () => {

@@ -69,6 +69,7 @@ export const ProductTable = styled.table`
       color: #666;
       padding: 6px;
       width: 50px;
+      text-align: center;
     }
   }
 
@@ -76,6 +77,8 @@ export const ProductTable = styled.table`
     background: none;
     border: 0;
     padding: 6px;
+    display: flex;
+    align-items: center;
 
     svg {
       color: #7159c1;

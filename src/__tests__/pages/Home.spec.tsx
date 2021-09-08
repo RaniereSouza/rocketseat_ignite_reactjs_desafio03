@@ -1,5 +1,5 @@
 import AxiosMock from 'axios-mock-adapter';
-import { waitFor, render, fireEvent } from '@testing-library/react';
+import { waitFor, render, fireEvent, cleanup } from '@testing-library/react';
 
 import { api } from '../../services/api';
 import Home from '../../pages/Home';
@@ -58,8 +58,12 @@ describe('Home Page', () => {
           title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
         },
       ],
-      addProduct: mockedAddProduct,
+      addProductToCart: mockedAddProduct,
     });
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should be able to render each product quantity added to cart', async () => {

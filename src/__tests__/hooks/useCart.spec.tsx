@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act, cleanup } from '@testing-library/react-hooks';
 import AxiosMock from 'axios-mock-adapter';
 
 import { toast } from 'react-toastify';
@@ -37,6 +37,10 @@ describe('useCart Hook', () => {
     jest
       .spyOn(Storage.prototype, 'getItem')
       .mockReturnValueOnce(JSON.stringify(initialStoragedData));
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it('should be able to initialize cart with localStorage value', () => {
@@ -86,7 +90,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProduct(productId);
+      result.current.addProductToCart(productId);
     });
 
     await waitForNextUpdate({ timeout: 200 });
@@ -136,7 +140,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProduct(productId);
+      result.current.addProductToCart(productId);
     });
 
     await waitFor(
@@ -174,7 +178,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProduct(productId);
+      result.current.addProductToCart(productId);
     });
 
     await waitForNextUpdate({ timeout: 200 });
@@ -224,7 +228,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProduct(productId);
+      result.current.addProductToCart(productId);
     });
 
     await waitFor(
@@ -252,7 +256,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.removeProduct(productId);
+      result.current.removeProductFromCart(productId);
     });
 
     expect(result.current.cart).toEqual(
@@ -281,7 +285,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.removeProduct(productId);
+      result.current.removeProductFromCart(productId);
     });
 
     expect(mockedToastError).toHaveBeenCalledWith('Erro na remoção do produto');
