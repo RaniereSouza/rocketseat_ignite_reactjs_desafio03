@@ -90,7 +90,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProductToCart(productId);
+      result.current.addProduct(productId);
     });
 
     await waitForNextUpdate({ timeout: 200 });
@@ -140,7 +140,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProductToCart(productId);
+      result.current.addProduct(productId);
     });
 
     await waitFor(
@@ -178,7 +178,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProductToCart(productId);
+      result.current.addProduct(productId);
     });
 
     await waitForNextUpdate({ timeout: 200 });
@@ -228,7 +228,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.addProductToCart(productId);
+      result.current.addProduct(productId);
     });
 
     await waitFor(
@@ -256,7 +256,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.removeProductFromCart(productId);
+      result.current.removeProduct(productId);
     });
 
     expect(result.current.cart).toEqual(
@@ -285,7 +285,7 @@ describe('useCart Hook', () => {
     });
 
     act(() => {
-      result.current.removeProductFromCart(productId);
+      result.current.removeProduct(productId);
     });
 
     expect(mockedToastError).toHaveBeenCalledWith('Erro na remoção do produto');

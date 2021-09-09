@@ -20,10 +20,10 @@ interface UpdateProductAmountParams {
 }
 
 interface CartContextData {
-  cart:                  Product[];
-  addProductToCart:      (productId: number) => Promise<void>;
-  removeProductFromCart: (productId: number) => void;
-  updateProductAmount:   ({ productId, amount }: UpdateProductAmountParams) => void;
+  cart:                Product[];
+  addProduct:          (productId: number) => Promise<void>;
+  removeProduct:       (productId: number) => void;
+  updateProductAmount: ({ productId, amount }: UpdateProductAmountParams) => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -43,7 +43,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     localStorage.setItem('@RocketShoes:cart', JSON.stringify(updatedCart));
   };
 
-  const addProductToCart = async (productId: number) => {
+  const addProduct = async (productId: number) => {
     try {
       const productInCart = cart.find(({ id }) => (id === productId));
 
@@ -69,7 +69,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
-  const removeProductFromCart = (productId: number) => {
+  const removeProduct = (productId: number) => {
     try {
       const productInCart = cart.find(({ id }) => (id === productId));
 
@@ -123,7 +123,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return;
       }
 
-      addProductToCart(productId);
+      addProduct(productId);
     }
     catch {
       toast.error('Erro na alteração de quantidade do produto');
@@ -134,8 +134,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     <CartContext.Provider
       value={{
         cart, 
-        addProductToCart, 
-        removeProductFromCart, 
+        addProduct, 
+        removeProduct, 
         updateProductAmount 
       }}
     >

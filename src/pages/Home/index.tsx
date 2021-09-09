@@ -20,8 +20,8 @@ interface CartItemsAmount {
 }
 
 const Home = (): JSX.Element => {
-  const [ products, setProducts ]  = useState<ProductFormatted[]>([]);
-  const { addProductToCart, cart } = useCart();
+  const [ products, setProducts ] = useState<ProductFormatted[]>([]);
+  const { addProduct, cart }      = useCart();
 
   useEffect(() => {
     async function loadProducts() {
@@ -40,7 +40,7 @@ const Home = (): JSX.Element => {
 
   
   function handleAddProductToCart(id: number) {
-    addProductToCart(id);
+    addProduct(id);
   }
   
   const cartItemsAmount = cart.reduce((sumAmount, { id, amount }) => {

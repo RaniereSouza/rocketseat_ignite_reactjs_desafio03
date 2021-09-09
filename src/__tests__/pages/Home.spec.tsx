@@ -58,7 +58,7 @@ describe('Home Page', () => {
           title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
         },
       ],
-      addProductToCart: mockedAddProduct,
+      addProduct: mockedAddProduct,
     });
   });
 

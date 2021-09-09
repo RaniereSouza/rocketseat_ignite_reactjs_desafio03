@@ -19,7 +19,7 @@ interface ProductFormatted extends Product {
 
 const Cart = (): JSX.Element => {
   const { cart, 
-          removeProductFromCart, 
+          removeProduct, 
           updateProductAmount } = useCart();
 
   const cartFormatted = cart.map<ProductFormatted>(product => ({
@@ -49,7 +49,7 @@ const Cart = (): JSX.Element => {
   }
 
   function handleRemoveProduct(productId: number) {
-    removeProductFromCart(productId);
+    removeProduct(productId);
   }
 
   return (
